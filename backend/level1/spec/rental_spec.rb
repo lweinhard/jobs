@@ -21,4 +21,8 @@ RSpec.describe Rental do
   it 'should have correct distance' do
     expect(rental.distance).to eq 100
   end
+
+  it 'should have correct duration' do
+    expect(rental.duration).to eq 3
+  end
 end

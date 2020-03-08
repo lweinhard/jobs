@@ -10,4 +10,8 @@ class Rental
     @end_date = DateTime.parse(rental_hash["end_date"])
     @distance = rental_hash["distance"]
   end
+
+  def duration
+    (@end_date - @start_date).to_i + 1
+  end
 end
