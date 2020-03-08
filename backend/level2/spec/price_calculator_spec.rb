@@ -15,6 +15,10 @@ RSpec.describe PriceCalculator do
     expect(prices.first[:price]).to eq 3000
   end
 
+  it "should compute correct price with its sale" do
+    expect(prices.last[:price]).to eq 22000
+  end
+
   it "should contain correct amount of rentals prices" do
     expect(prices.length).to eq rentals.length
   end
