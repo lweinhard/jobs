@@ -9,7 +9,7 @@ class PriceCalculator
 
   def compute_prices
     @prices = @rentals.map do |rental|
-      car = fetch_car_from_id(rental.id)
+      car = fetch_car_from_id(rental.car_id)
       compute_price(rental, car)  
     end
   end
