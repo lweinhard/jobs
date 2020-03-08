@@ -18,8 +18,21 @@ class PriceCalculator
     @cars.find { |car| car.id === id }
   end
 
+  def duration_price(duration, price_per_day)
+    sale = fetch_duration_sale(duration)
+    total_price = duration * price_per_day
+    total_price - (total_price * sale)
+  end
+
+  def fetch_duration_sale(duration)
+    return 0 unless duration > 1
+    return 0.5 if duration > 10
+    return 0.3 if duration > 4
+    return 0.1 if duration > 1
+  end
+
   def compute_price(rental, car)
-    duration_price = rental.duration * car.price_per_day
+    duration_price = duration_price(rental.duration, car.price_per_day)
     kms_price = rental.distance * car.price_per_km
     total_price = duration_price + kms_price
 
